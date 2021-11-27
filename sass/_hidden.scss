@@ -1,0 +1,131 @@
+#hidden {
+  grid-column: full-start/ full-end;
+  background: $gray-hidden;
+}
+.hidden {
+  position: relative;
+  display: none;
+  width: 100%;
+  @media only screen and (min-width: 700px) {
+    width: 70%;
+    margin: 0 auto;
+    padding: 8rem 0 8rem;
+  }
+}
+.hidden.isOpen {
+  display: grid;
+  grid-template-columns: auto;
+}
+.close-hidden {
+  top: 2rem;
+  position: absolute;
+  background: $primary;
+  cursor: pointer;
+  @media only screen and (min-width: 700px) {
+    font-size: 2.5rem;
+  }
+}
+
+.productsHeader {
+  margin-top: -5rem;
+}
+
+.hidden-products {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
+.product {
+  box-shadow: 0.1rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
+  transition: $secondTransition;
+}
+.product:hover {
+  transition: $secondTransition;
+  box-shadow: none;
+  .product-info {
+    color: $black;
+    background: $bg2;
+  }
+  .product-price {
+    color: $gray-dark;
+  }
+}
+.img-container {
+  position: relative;
+  overflow: hidden;
+}
+.bag-btn:hover,
+.wish-btn:hover {
+  color: $white;
+}
+.fa-shopping-cart,
+.wish-icon {
+  margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn,
+.img-container:hover .wish-btn {
+  transform: translateX(0);
+}
+.product-img {
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  transition: $mainTransition;
+}
+.bag-btn,
+.wish-btn {
+  position: absolute;
+  right: 0;
+  background: $primary;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: $mainSpacing;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  transform: translateX(101%);
+  cursor: pointer;
+}
+.bag-btn {
+  top: 70%;
+  transition: $mainTransition;
+}
+.wish-btn {
+  top: 50%;
+  transition: $slowTransition;
+}
+.product-info {
+  background: $gray-dark;
+  color: $white;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: $mainSpacing;
+  font-family: "josefin-r";
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+  grid-template-areas:
+    "title price"
+    "color color";
+}
+.product-h3 {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+.product-price {
+  font-size: 1.6rem;
+  text-align: right;
+  color: $primary;
+}
+.product-color {
+  font-family: "josefin-l";
+  width: 200%;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Author: Joakim Wretlind, use: Personal portfolio content, content: An e-commerce web-page with some 3D content. Further information can be found in the about-section on the webpage.">
+    <!-- favicon -->
+    <link rel="icon" href="/images/au-logo-jos-light.png">
+    <!-- Security -->
+    <meta content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'" ;>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <!-- STYLING -->
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Acme Furniture</title>
+</head>
+
+<body>
+    <!---------- HEADER ---------->
+    <header>
+        <div class="logo-full">
+            <span class="logo-span">A</span>cme f<span class="logo-span">u</span>rniture
+        </div>
+        <div class="wrapper">
+            <div class="menu-toggle">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="logo-small">
+                <span class="logo-span">au</span>
+            </div>
+            <div class="main-menu">
+                <li class="category-button"><a href="#hero" class="menu-a active">home</a></li>
+                <li class="category-button"><a target="_self" href="about.html" class="menu-a">about</a></li>
+                <li><a href="#categories" class="menu-a">products</a>
+                    <ul class="dropdown">
+                        <li class="category-button" onclick="displaySearch(new Products, 'beds')"><a
+                                href="#hidden">beds</a></li>
+                        <li class="category-button" onclick="displaySearch(new Products, 'sofas')"><a
+                                href="#hidden">sofas</a></li>
+                        <li class="category-button" onclick="displaySearch(new Products, 'dressers')"><a
+                                href="#hidden">dressers</a></li>
+                        <li class="category-button" onclick="displaySearch(new Products, 'news')"><a
+                                href="#hidden">news</a></li>
+                    </ul>
+                </li>
+                <li><a href="#threeD" class="menu-a">3D</a></li>
+                <li class="category-button"><a href="#inspiration" class="menu-a">inspiration</a></li>
+                <li class="category-button"><a href="#contact" class="menu-a">contact</a></li>
+            </div>
+            <div class="main-icons">
+                <ion-icon class="main-icon mainSearch" name="search-outline"></ion-icon>
+                <ion-icon class="main-icon mainAccount" name="person-outline"></ion-icon>
+                <ion-icon class="main-icon mainWishlist" name="heart-outline"></ion-icon>
+                <div class="wish-items">0</div>
+                <ion-icon class="main-icon mainCart" name="cart-outline"></ion-icon>
+                <div class="cart-items">0</div>
+            </div>
+        </div>
+        <!-- End Header -->
+    </header>
+
+    <!---------- SEARCH ---------->
+    <div class="searchbar">
+        <input type="search" aria-label="search" id="search" class="search-input"
+            placeholder="Search item, title or color">
+        <button class="search-icon">
+            <ion-icon name="search-outline"></ion-icon>
+        </button>
+        <!-- End Search -->
+    </div>
+
+    <!---------- ACCOUNT ---------->
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="account-container">
+                <div class="flip-card">
+                    <!-- Sign In-->
+                    <div class="sign-in">
+                        <figure class="account-figure">
+                            <div class="img-bg"></div>
+                            <img class="account-img" src="/images/modal-1.jpg" alt="modal background">
+                        </figure>
+                        <ion-icon class="close-account" name="close-outline"></ion-icon>
+                        <form action="#" class="account-form" id="sign-in-form">
+                            <h1 class="account-h1">sign in</h1>
+                            <div class="social-container">
+                                <a href="#" class="account-social"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="account-social"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="account-social"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#" class="account-social"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <span class="account-span">or use your account</span>
+                            <input id="userName" class="account-input userName" type="text" aria-label="username"
+                                placeholder="Username" />
+                            <input id="password" class="account-input" type="password" aria-label="password"
+                                placeholder="Password" />
+                            <a class="forgot-account" href="#">Forgot your password?</a>
+                            <button type="submit" class="account-button sign-in-button-in">Sign In</button>
+                            <button class="account-button sign-up-button-in">Sign Up</button>
+                            <div class="error" id="error"></div>
+                        </form>
+                    </div>
+                    <!-- Sign Up-->
+                    <div class="sign-up">
+                        <figure class="account-figure">
+                            <div class="img-bg"></div>
+                            <img class="account-img" src="/images/modal-2-min.jpg" alt="background sign up">
+                        </figure>
+                        <ion-icon class="close-account" name="close-outline"></ion-icon>
+                        <form action="#" class="account-form" id="sign-up-form">
+                            <h1 class="signup-h1">sign up</h1>
+                            <input class="account-input" type="text" aria-label="username" placeholder="Username"
+                                id="signUpUserName" />
+                            <input type="email" class="account-input" aria-label="user-email" id="userEmail"
+                                placeholder="your email">
+                            <input class="account-input" id="signUpPassword" type="password" aria-label="password"
+                                placeholder="Password" />
+                            <input type="password" aria-label="confirm password" class="account-input"
+                                id="confirmPassword" placeholder="confirm password">
+                            <p class="account-p">By clicking the Sign Up button, you agree to our <span><a
+                                        class="account-a" href="#">Terms & Conditions</a></span>, and <span><a
+                                        class="account-a" href="#">Privacy
+                                        Policy</a></span></p>
+                            <button class="account-button sign-up-button-up" type="submit">Sign Up</button>
+                            <button class="account-button sign-in-button-up">Sign In</button>
+                            <div class="error" id="errorUp"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="welcome" id="welcomeIn">
+                <div class="hidden-welcome"></div>
+
+                <figure class="account-figure">
+                    <div class="img-bg"></div>
+                    <img class="account-img" src="/images/modal-3-min.jpg" alt="background sign in">
+                </figure>
+            </div>
+        </div>
+        <!-- End Account -->
+    </div>
+
+    <!---------- PRODUCTS ---------->
+
+    <!---------- WISHLIST ---------->
+    <div class="wishlist-overlay"></div>
+    <div class="wishlist">
+        <span class="close-wish">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h2 class="cart-h2">your wishlist</h2>
+        <div class="wish-content"></div>
+        <div class="wishlist-footer">
+            <button class="clear-wish button-model">clear list</button>
+        </div>
+        <!-- End Wishlist -->
+    </div>
+
+    <!---------- CART ---------->
+    <div class="cart-overlay"></div>
+    <div class="cart">
+        <span class="close-cart">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h2 class="cart-h2">your cart</h2>
+        <div class="cart-content"></div>
+        <div class="cart-footer">
+            <h3>your total: $<span class="cart-total">0</span></h3>
+            <button class="clear-cart button-model">clear-cart</button>
+            <button class="register button-model">go to register</button>
+        </div>
+        <!-- End Cart -->
+    </div>
+
+    <!---------- GRID-CONTAINER ---------->
+    <div class="grid-container">
+        <!---------- HERO ---------->
+        <div id="hero">
+            <!-- VIDEO -->
+            <div class="hero-wrapper">
+                <video autoplay muted id="video1" class="video1">
+                    <source src="/video/vid-1.mp4" type="video/mp4" />
+                </video>
+                <video muted id="video2" class="video2">
+                    <source src="/video/vid-2.mp4" type="video/mp4" />
+                </video>
+                <video autoplay muted id="video3" class="video3">
+                    <source src="/video/vid-3.mp4" type="video/mp4" />
+                </video>
+            </div>
+
+            <!-- TEXT OVERLAY -->
+            <div class="text">
+                <h1 class="text__title">
+                    <span class="span-title">A</span>CME F<span class="span-title">U</span>RNITURE
+                </h1>
+                <p class="text__paragraph">Make Your home awesome 2020</p>
+            </div>
+            <!-- End Hero-->
+        </div>
+
+        <!---------- CATEGORIES ---------->
+        <div id="categories">
+            <section>
+                <h2 class="h2-header">shop by category</h2>
+            </section>
+            <ul class="ul-categories">
+                <li class="category-button" onclick="displaySearch(new Products, 'lights')"><a href="#hidden"
+                        class="category-a">lights</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'sofas')"><a href="#hidden"
+                        class="category-a">sofas</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'armchairs')"><a href="#hidden"
+                        class="category-a">armchairs</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'beds')"><a href="#hidden"
+                        class="category-a">beds</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'chairs')"><a href="#hidden"
+                        class="category-a">chairs</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'tables')"><a href="#hidden"
+                        class="category-a">tables</a></li>
+                <li class="category-button" onclick="displaySearch(new Products, 'dressers')"><a href="#hidden"
+                        class="category-a">dressers</a></li>
+            </ul>
+            <!----- BIG IMAGES ----->
+            <!-- ROW 1 -->
+            <!-- FIG 1 -->
+            <div class="cat-group row1">
+                <div class="category-item-group">
+                    <figure class="category-item">
+                        <img src="/images/kitchen.jpg" alt="kitchen" />
+                        <div class="title">
+                            <div>
+                                <h2>kitchen</h2>
+                                <h4>discover</h4>
+                            </div>
+                        </div>
+                        <figcaption>
+                            <p>Make every meal an experience.</p>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+
+                <!-- FIG 2 -->
+                <div class="category-item-group">
+                    <figure class="category-item">
+                        <img src="/images/livingroom.jpg" alt="livingroom" />
+                        <div class="title">
+                            <div>
+                                <h2>livingroom</h2>
+                                <h4>discover</h4>
+                            </div>
+                        </div>
+                        <figcaption>
+                            <p>A place for recreation and socialize.</p>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="cat-group row2">
+                <!-- FIG 3 -->
+                <div class="category-item-group">
+                    <figure class="category-item">
+                        <img src="/images/office.jpg" alt="office" />
+                        <div class="title">
+                            <div>
+                                <h2>office</h2>
+                                <h4>discover</h4>
+                            </div>
+                        </div>
+                        <figcaption>
+                            <p>Working from home or at the office? We have you covered.</p>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+
+                <!-- FIG 4 -->
+                <div class="category-item-group">
+                    <figure class="category-item">
+                        <img src="/images/bedroom.jpg" alt="bedroom" />
+                        <div class="title">
+                            <div>
+                                <h2>bedroom</h2>
+                                <h4>discover</h4>
+                            </div>
+                        </div>
+                        <figcaption>
+                            <p>A bedroom is so much more than just a bed.</p>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+
+                <!-- FIG 5 -->
+                <div class="category-item-group">
+                    <figure class="category-item">
+                        <img src="/images/newcommers.jpg" alt="new arrivals" />
+                        <div class="title">
+                            <div>
+                                <h2>news</h2>
+                                <h4>discover</h4>
+                            </div>
+                        </div>
+                        <figcaption>
+                            <p>
+                                Have a closer look at our latest contributions to a faboluos
+                                home.
+                            </p>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+            </div>
+            <!-- End Categories -->
+        </div>
+
+        <!---------- HIDDEN ---------->
+        <div id="hidden">
+            <section class="hidden">
+                <ion-icon class="close-hidden" name="close-outline"></ion-icon>
+                <div class="category-header"></div>
+                <div class="hidden-products"></div>
+            </section>
+            <!-- End Hidden-->
+        </div>
+
+        <!---------- 3D ---------->
+        <div id="threeD">
+            <section>
+                <h2 class="h2-header">view products in 3D</h2>
+            </section>
+            <!-- MY CAROUSEL -->
+            <div class="carousel">
+                <div class="prev-btn">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <div class="carousel-inner carousel-DOM">
+                    <!-- SLIDE 1 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">Jules & Vincent</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/julesandvincent.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/julesandvincent.html"><button
+                                class="card__button button-model">view in 3D</button></a>
+                        <a
+                            href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/julesandvincent/julesandvincent.html"><button
+                                class="card__button button-model">if not working</button></a>
+                    </div>
+                    <!-- SLIDE 2 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">Koons</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/koons.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/koons.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a
+                            href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/koons01/koons.html"><button
+                                class="card__button button-model">if not working</button></a>
+                    </div>
+                    <!-- SLIDE 3 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">marcellus</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/marcellus.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/marcellus.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a
+                            href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/marcellus/chesterfield.html"><button
+                                class="card__button button-model">if not working</button></a>
+                    </div>
+                    <!-- SLIDE 4 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">mia</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/mia.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/mia.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/mia/mia.html"><button
+                                class="card__button button-model">if not working</button></a>
+                    </div>
+                    <!-- SLIDE 5 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">zed</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/zed.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/zed.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/zed/zed.html"><button
+                                class="card__button button-model">if not
+                                working</button></a>
+                    </div>
+                    <!-- SLIDE 6 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">butch</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/butch.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/butch.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a
+                            href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/butch/butch.html"><button
+                                class="card__button button-model">if not
+                                working</button></a>
+                    </div>
+                    <!-- SLIDE 7 -->
+                    <div class="slide">
+                        <div class="card__background">
+                            <h2 class="card__h2">gimp</h2>
+                        </div>
+                        <img class="card__img" src="/images/3D/gimp.jpg" alt="product-image" />
+                        <h3 class="card__h3">$123</h3>
+                        <p class="card__p">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                        <a target="_blank" href="/html/gimp.html"><button class="card__button button-model">view in
+                                3D</button></a>
+                        <a
+                            href="https://cdn.soft8soft.com/AROAJSY2GOEHMOFUVPIOE:c64dd3b3bd/applications/gimp/gimp.html"><button
+                                class="card__button button-model">if not
+                                working</button></a>
+                    </div>
+                </div>
+                <div class="next-btn">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+            </div>
+            <!-- End 3D -->
+        </div>
+
+        <!---------- INSPIRATION ---------->
+        <div id="inspiration">
+            <section>
+                <h2 class="h2-header">inspiration</h2>
+            </section>
+
+            <!-- SWIPER CAROUSEL -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/voting-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">interviews</h2>
+                        <h3 class="swiper-h3">elsa collins on voting and the way forward</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/autumn-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">design advice</h2>
+                        <h3 class="swiper-h3">bring warmth to the autumn</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/bedroom-1-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">behind the scenes</h2>
+                        <h3 class="swiper-h3">How the pros are styling #JKxLG</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/office-1-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">design advice</h2>
+                        <h3 class="swiper-h3">create an impressive office</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/dining-3-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">design advice</h2>
+                        <h3 class="swiper-h3">styling seeries: how to pair dining tables and chairs</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/livingroom-9-min.jpg" alt="inspiration-article"
+                            class="swiper-img">
+                        <h2 class="swiper-h2">home tours</h2>
+                        <h3 class="swiper-h3">a living room update with julia marcum</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/hallway-2-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">interviews</h2>
+                        <h3 class="swiper-h3">Kelly-Ann Baptiste on trusting the process</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/rugs-3-min.jpg" alt="inspiration-article" class="swiper-img">
+                        <h2 class="swiper-h2">design advice</h2>
+                        <h3 class="swiper-h3">vintage rugs and how to style them</h3>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/inspiration/livingroom-10-min.jpg" alt="inspiration-article"
+                            class="swiper-img">
+                        <h2 class="swiper-h2">behind the scenes</h2>
+                        <h3 class="swiper-h3">mistakes that secretly make interior designers cringe</h3>
+                    </div>
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-buttons">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <!-- End Container -->
+            </div>
+            <!-- End Inspiration -->
+        </div>
+
+        <!---------- CONTACT ---------->
+        <div id="contact">
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-list">
+                        <li><a class="contact-a" href="">customer support</a></li>
+                        <li><a class="contact-a" href="">order status</a></li>
+                        <li><a class="contact-a" href="">affiliates</a></li>
+                        <li><a class="contact-a" href="">careers</a></li>
+                        <li><a class="contact-a" href="">offers</a></li>
+                        <li><a class="contact-a" href="">catalogue</a></li>
+                    </div>
+                    <div class="contact-mail">
+                        <p class="contact-p">sign up for email and recieve 10% off your first order</p>
+                        <form class="contact-form">
+                            <input type="text" aria-label="contact-form" class="contact-form__input"
+                                placeholder="enter search">
+                            <button class="contact-form__submit">submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <div class="contact-social">
+                        <ion-icon class="contact-icons" name="logo-instagram"></ion-icon>
+                        <ion-icon class="contact-icons" name="logo-facebook"></ion-icon>
+                        <ion-icon class="contact-icons" name="logo-twitter"></ion-icon>
+                        <ion-icon class="contact-icons" name="logo-pinterest"></ion-icon>
+                    </div>
+                    <div class="contact-adress">
+                        <p>acme furniture</p>
+                        <p>furniture street 8</p>
+                        <p>123 45 hometown</p>
+                        <br />
+                        <p>phone: 0123-456 789</p>
+                    </div>
+                    <div class="contact-copyright">
+                        &copy; Copyright 2020 by Joakim Wretlind
+                    </div>
+                </div>
+            </div>
+            <!-- End Contact -->
+        </div>
+        <!-- End Grid-Container-->
+    </div>
+    <!---------- SCROLL TO TOP ---------->
+    <div id="scrollToTop" onclick="scrollToTop()">
+        <img src="/images/chevron-up-white.png" alt="" id="toTopBtn">
+        <!-- End Scroll To Top-->
+    </div>
+    <!------- ION ICONS ------->
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
+    <!-- SWIPER -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- SCRIPTS -->
+    <script src="/js/hero.js"></script>
+    <script src="/js/inspiration.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/scrollToTop.js"></script>
+    <script src="/js/threeDCarousel.js"></script>
+</body>
+
+</html>

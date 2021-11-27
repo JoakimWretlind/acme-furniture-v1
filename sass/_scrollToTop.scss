@@ -1,0 +1,33 @@
+#scrollToTop {
+  position: fixed;
+  width: 4rem;
+  height: 4rem;
+  background: $gray-dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  bottom: -100%;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.35s;
+  z-index: 10000;
+}
+#toTopBtn {
+  height: 2rem;
+  width: 2rem;
+}
+
+/* BACK TOP TOP WHEN SCROLLED */
+#scrollToTop.scrolled {
+  bottom: 10%;
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  z-index: 100;
+}
+#scrollToTop.scrolled:hover {
+  background: $primary;
+  transition: 0.35s linear;
+}

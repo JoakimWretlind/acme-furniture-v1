@@ -1,0 +1,231 @@
+header {
+  position: fixed;
+  height: 7.1rem;
+  width: 100%;
+  background: $white;
+  z-index: 1000;
+}
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(2, 7rem);
+  grid-template-areas:
+    "toggle icon icon"
+    "menu menu menu";
+  @media only screen and (min-width: 700px) {
+    background: $white;
+    display: flex;
+  }
+}
+
+/**** MENU-TOGGLE ****/
+.menu-toggle {
+  grid-area: toggle;
+  position: relative;
+  margin: 2rem 0 0 3rem;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: 0.5s;
+  .line {
+    position: absolute;
+    display: block;
+    height: 0.2rem;
+    width: 3rem;
+    background: $gray-dark;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: 0.35s ease-in-out;
+  }
+
+  @media only screen and (min-width: 700px) {
+    display: none;
+  }
+  .line:nth-child(1) {
+    top: 0rem;
+  }
+  .line:nth-child(2) {
+    top: 1rem;
+  }
+  .line:nth-child(3) {
+    top: 2rem;
+  }
+}
+.menu-toggle.open .line:nth-child(1) {
+  top: 1rem;
+  transform: rotate(45deg);
+}
+.menu-toggle.open .line:nth-child(2) {
+  opacity: 0;
+  bottom: 0;
+}
+.menu-toggle.open .line:nth-child(3) {
+  top: 1rem;
+  transform: rotate(-45deg);
+}
+
+/**** LOGOS ****/
+.logo-span {
+  font-family: "leroy";
+  font-size: 4.2rem;
+  padding-top: 3.8%;
+  color: $red;
+}
+.logo-small {
+  color: $white;
+  display: none;
+  @media only screen and (min-width: 1000px) {
+    grid-area: logo;
+    display: block;
+    font-size: 3rem;
+    margin: 0 3rem;
+    padding-top: 1.5rem;
+    text-transform: uppercase;
+    width: 5rem;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-left: 15%;
+  }
+}
+.logo-full {
+  display: none;
+  @media only screen and (min-width: 1000px) {
+    grid-area: full;
+    display: block;
+    font-size: 3.5rem;
+    margin-left: 2rem;
+    padding-top: 1.5rem;
+    font-family: "voga";
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    padding-top: 2.5rem;
+  }
+}
+
+/**** ICONS ****/
+.main-icons {
+  position: relative;
+  grid-area: icon;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  ion-icon:hover {
+    color: $primary;
+  }
+  @media only screen and (min-width: 700px) {
+    margin: 0 3rem;
+    font-size: 1.8rem;
+    width: 17%;
+    max-width: 20rem;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-right: 15%;
+  }
+}
+
+/**** MAIN MENU ****/
+.main-menu {
+  position: relative;
+  grid-area: menu;
+  background: $gray-dark;
+  height: 100vh;
+  padding: 2rem;
+  margin-top: -301%;
+  transition: $slowTransition;
+  li {
+    padding: 1rem 0;
+    a {
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: $white;
+    }
+    a.active {
+      color: $yellow;
+    }
+    a:hover {
+      color: $primary;
+    }
+  }
+  .dropdown {
+    margin: 1rem 2rem;
+    padding: 0 2rem;
+    border-left: 0.3rem solid $white;
+  }
+  @media only screen and (min-width: 700px) {
+    position: relative;
+    margin: 0 auto 0 3rem;
+    width: 65%;
+    min-width: 45rem;
+    height: 7rem;
+    background: transparent;
+    grid-area: menu;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      a {
+        font-size: 1.2rem;
+        color: $black;
+      }
+      a.active,
+      a.active:hover {
+        color: $red;
+      }
+      a:hover {
+        color: $primary;
+      }
+    }
+    .dropdown {
+      position: absolute;
+      margin: 0;
+      top: 5rem;
+      padding: 1rem 0;
+      border: 0;
+      display: none;
+      @media only screen and (min-width: 700px) {
+        background: $white;
+        margin-left: -3rem;
+        padding-left: 3rem;
+        width: 14rem;
+      }
+    }
+    li:hover > .dropdown {
+      display: block;
+      li {
+        width: 17rem;
+        float: none;
+        display: list-item;
+        position: relative;
+        a {
+          padding-top: 3rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1000px) {
+    margin: 0 auto;
+    max-width: 65rem;
+  }
+}
+.main-menu.open {
+  transition: $slowTransition;
+  margin-top: 0;
+}
+
+/**** COUNTERS ****/
+.wish-items,
+.cart-items {
+  position: absolute;
+  top: 1.5rem;
+  font-size: 1.4rem;
+  font-family: "josefin-l";
+  color: $white;
+  padding: 0.4rem 0.5rem 0.1rem 0.5rem;
+}

@@ -1,0 +1,79 @@
+#inspiration {
+  grid-column: full-start/ full-end;
+  background: $white;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 45rem;
+  margin: 0 auto 8rem;
+  padding: 3rem;
+  @media only screen and (min-width: 1200px) {
+    width: 70%;
+    height: 55rem;
+    margin: 0 auto 5rem;
+  }
+}
+
+.swiper-slide {
+  max-width: 30rem;
+  width: 100%;
+  max-height: 50rem;
+  height: 100%;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+
+  .swiper-img {
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    width: calc(100% + 1px);
+    height: 70%;
+    object-fit: cover;
+  }
+  text-align: center;
+  font-size: 18px;
+}
+
+.swiper-slide:hover {
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.3);
+  transform: translateY(0.1rem);
+  .card-background {
+    background-color: #fcf0df;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  width: 4rem;
+  height: 5rem;
+  color: #eee;
+  background-color: #222;
+}
+.swiper-button-next {
+  right: 0;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-h2 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  letter-spacing: $mainSpacing;
+  font-family: "playfair-r";
+  position: absolute;
+  top: 73%;
+  color: $gray-dark;
+}
+.swiper-h3 {
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  font-family: "playfair-r";
+  position: absolute;
+  top: 81%;
+  padding: 0 2em;
+  color: $gray-med;
+}

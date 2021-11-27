@@ -1,0 +1,153 @@
+#contact {
+  grid-column: full-start/ full-end;
+  background: $gray-light;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 100%));
+  @media only screen and (min-width: 600px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+.contact {
+  margin: 2rem auto;
+  width: calc(100% - 6rem);
+  @media only screen and (min-width: 670px) {
+    display: flex;
+    justify-content: space-between;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin: 4rem auto;
+    width: 70%;
+  }
+  @media only screen and (min-width: 1400px) {
+    width: 50%;
+  }
+  @media only screen and (min-width: 2000px) {
+    margin: 6rem auto;
+    width: 30%;
+  }
+}
+.contact-left {
+  max-width: 40rem;
+  margin: 0 auto;
+  @media only screen and (min-width: 670px) {
+    max-width: 40rem;
+    margin-left: 0;
+  }
+  .contact-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    white-space: nowrap;
+    text-align: center;
+    max-width: 40rem;
+    @media only screen and (min-width: 700px) {
+      max-width: 40rem;
+    }
+    .contact-a {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 0.1rem;
+      width: 50%;
+      cursor: pointer;
+      @media only screen and (min-width: 600px) {
+        font-size: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 3em;
+        white-space: nowrap;
+        text-align: left;
+      }
+    }
+    .contact-a:hover {
+      color: $red;
+    }
+  }
+  .contact-mail {
+    padding-top: 1.5rem;
+    max-width: 40rem;
+    @media only screen and (min-width: 670px) {
+      max-width: 35rem;
+    }
+    .contact-p {
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+    .contact-form {
+      display: flex;
+      margin: 0.3rem 0 0;
+      &__input {
+        width: 14rem;
+        flex-grow: 1;
+        border: 0;
+        outline: none;
+        border-bottom: 0.1rem solid rgb(150, 150, 150);
+        padding: 0.5rem 0.8rem;
+      }
+      ::placeholder {
+        color: $gray-med;
+        letter-spacing: $mainSpacing;
+        font-size: 1.3rem;
+        font-family: "josefin-l";
+        text-transform: capitalize;
+      }
+      &__submit {
+        text-transform: uppercase;
+        background: $gray-dark;
+        color: $white;
+        font-size: 1.3rem;
+        border: 0;
+        outline: none;
+        padding: 0.7rem 0.5rem;
+        letter-spacing: $mainSpacing;
+        cursor: pointer;
+      }
+      &__submit:hover {
+        background: $primary;
+      }
+      &__submit:focus {
+        color: $gray-dark;
+        background: $bg;
+      }
+    }
+  }
+}
+
+.contact-right {
+  padding-top: 2rem;
+  text-align: center;
+  max-width: 30rem;
+  margin: 0 auto;
+  @media only screen and (min-width: 670px) {
+    padding-top: 0;
+    text-align: left;
+    margin: 0;
+  }
+  .contact-social {
+    max-width: 20rem;
+    margin: auto;
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (min-width: 670px) {
+      margin-left: 0;
+    }
+    .contact-icons {
+      font-size: 2rem;
+      color: $gray-dark;
+      cursor: pointer;
+    }
+  }
+  .contact-adress {
+    white-space: nowrap;
+    margin-top: 2em;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+  .contact-copyright {
+    padding: 1em 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+}

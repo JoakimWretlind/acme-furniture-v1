@@ -1,0 +1,82 @@
+{
+    "items": 
+    [
+        {
+            "id": "3001",
+            "category": "beds",
+            "header": "comfy bed",
+            "title": "bed",
+            "color": ["gray", "beige"],
+            "price": "1035",
+            "image": {
+                "url": "/images/3D/bed.jpg"
+            }
+        },
+        {
+            "id": "3002",
+            "category": "armchairs",
+            "header": "comfy bed",
+            "title": "armchair",
+            "color": ["gray", "black"],
+            "price": "275",
+            "image": {
+                "url": "/images/3D/armchair.jpg"
+            }
+        },
+        {
+            "id": "3003",
+            "category": "drawer",
+            "header": "comfy bed",
+            "title": "drawer",
+            "color": ["black", "white"],
+            "price": "125",
+            "image": {
+                "url": "/images/3D/drawer.jpg"
+            }
+        },
+        {
+            "id": "3004",
+            "category": "drawer",
+            "header": "comfy bed",
+            "title": "drawer 2",
+            "color": ["black", "red", "white"],
+            "price": "105",
+            "image": {
+                "url": "/images/3D/drawer2.jpg"
+            }
+        },
+        {
+            "id": "3005",
+            "category": "sofa",
+            "header": "comfy bed",
+            "title": "chesterfield",
+            "color": ["red", "black"],
+            "price": "1025",
+            "image": {
+                "url": "/images/3D/chesterfield.jpg"
+            }
+        },
+        {
+            "id": "3006",
+            "category": "table",
+            "header": "comfy bed",
+            "title": "table",
+            "color": ["brown", "wood"],
+            "price": "375",
+            "image": {
+                "url": "/images/3D/table.jpg"
+            }
+        },
+        {
+            "id": "3007",
+            "category": "table",
+            "header": "comfy bed",
+            "title": "table",
+            "color": ["black", "marble", "white"],
+            "price": "1225",
+            "image": {
+                "url": "/images/3D/table2.jpg"
+            }
+        }
+    ]
+}

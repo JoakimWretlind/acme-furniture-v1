@@ -1,0 +1,146 @@
+// COLORS
+$bg: #fcf0df;
+$bg2: #f0c094;
+$black: #000;
+$gray-dark: #333;
+$gray-light: #ececec;
+$gray-hidden: #dfd9d2;
+$gray-med: #c0c0c0;
+$primary: #f09d51;
+$red: #df0000;
+$yellow: #ffd477;
+$white: #fff;
+
+// VALUES
+$mainSpacing: 0.1rem;
+$mainTransition: all 0.3s linear;
+$secondTransition: all 0.2s linear;
+$slowTransition: all 0.5s linear;
+
+// FONTS
+@font-face {
+  font-family: "leroy";
+  src: url(/font/FontleroyBrownNF.woff);
+}
+
+@font-face {
+  font-family: "josefin-l";
+  src: url(/font/JosefinSans-Light.woff);
+}
+
+@font-face {
+  font-family: "josefin-m";
+  src: url(/font/JosefinSans-Medium.woff);
+}
+
+@font-face {
+  font-family: "josefin-r";
+  src: url(/font/JosefinSans-Regular.woff);
+}
+
+@font-face {
+  font-family: "josefin-sb";
+  src: url(/font/JosefinSans-SemiBold.woff);
+}
+
+@font-face {
+  font-family: "playfair-r";
+  src: url(/font/PlayfairDisplay-Regular.woff);
+}
+
+@font-face {
+  font-family: "voga";
+  src: url(/font/Voga-Medium.woff);
+}
+
+// FONT-SIZE
+$regular: 1.3rem;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "josefin-m";
+  background: $gray-dark;
+  scroll-behavior: smooth;
+}
+
+a,
+p {
+  line-height: 1.6;
+  text-decoration: none;
+  font-size: $regular;
+  color: #333;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.h2-header {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-family: "josefin-m";
+  text-align: center;
+  font-size: clamp(1.3rem, 4.2vw, 2.5rem);
+}
+
+.button-model {
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  letter-spacing: $mainSpacing;
+  font-size: 1rem;
+  background: $primary;
+  color: $black;
+  border: 1px solid $primary;
+  outline: none;
+  transition: $mainTransition;
+  cursor: pointer;
+}
+.button-model:hover {
+  background: transparent;
+  color: $primary;
+}
+
+.threed-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 70vh repeat(4, min-content);
+  grid-template-columns:
+    [full-start] 1fr [center-start] repeat(
+      8,
+      [col-start] minmax(0, 1fr) [col-end]
+    )
+    [center-end] minmax(0, 1fr) [full-end];
+  @media only screen and (min-width: 700px) {
+    grid-template-rows: 85vh repeat(4, min-content);
+  }
+  @media only screen and (min-width: 1200px) {
+    grid-template-rows: 100vh repeat(4, min-content);
+  }
+}
